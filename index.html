@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Happy Holidays 3D Card</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-bg">
+          <img src="card-bg.jpg" alt="" />
+        </div>
+        <div class="title">
+          <h2>Merry</h2>
+          <h1>Christmas</h1>
+          <h3>& Happy New Year</h3>
+        </div>
+        <div class="images">
+          <img src="santa.jpg" class="santa" alt="" />
+          <img src="tree.jpg" class="tree" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const container = document.querySelector(".container");
+      const card = document.querySelector(".card");
+      const title = document.querySelector(".title");
+      const santa = document.querySelector(".santa");
+      const tree = document.querySelector(".tree");
+
+      // card rotate on mouse move
+      container.addEventListener("mousemove", (rotate) => {
+        let x = (innerWidth / 2 - rotate.pageX) / 15;
+        let y = (innerHeight / 2 - rotate.pageY) / 15;
+
+        card.style.transform = "rotateY(" + x + "deg) rotateX(" + y + "deg)";
+      });
+
+      // card effect on mouse over
+      container.addEventListener("mouseover", () => {
+        title.style.transform = "translate3d(0, 0, 160px)";
+        santa.style.transform = "translate3d(0, 0, 220px)";
+        tree.style.transform = "translate3d(0, 0, 120px)";
+        card.style.transform = "all .1s ease";
+      });
+
+      // card back to default on mouse out
+      container.addEventListener("mouseout", () => {
+        card.style.transform = "rotateY(0deg) rotateX(0deg)";
+        title.style.transform = "translate3d(0, 0, 0)";
+        santa.style.transform = "translate3d(0, 0, 0)";
+        tree.style.transform = "translate3d(0, 0, 0)";
+        card.style.transform = "all .5s ease";
+      });
+    </script>
+  </body>
+</html>
